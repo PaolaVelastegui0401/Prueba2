@@ -3,6 +3,7 @@ package com.doodlzapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 public class MainActivity2 extends AppCompatActivity {
     private EditText usuario;
     private EditText contraseña;
+    private SharedPreferences.OnSharedPreferenceChangeListener preferencesChangeListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +25,6 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     public void Ingresar(View view) {
-
         String usu = usuario.getText().toString();
         String contra = contraseña.getText().toString();
 
@@ -36,7 +37,7 @@ public class MainActivity2 extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }else{
-
+            Toast.makeText(this, "No son correctos", Toast.LENGTH_LONG).show();
         }
     }
 }
